@@ -4,23 +4,29 @@
 <html>
 <head>
   <script>
-function checkEmail() {
-      //var name = document.getElementById('N');
-      //var pass = document.getElementById('P');
+  function checkEmail() {
+      var n = document.getElementById('N').value;
+      var p = document.getElementById('P').value;
+      var e = document.getElementById('E').value;
+
       var email = document.getElementById('E');
       var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-
-      /*if(name=='' || pass==''){
-        alert('Nameand Password is requird');
-        email.focus;
-        return false;}*/
-
-    if (!filter.test(email.value)) {
-    alert('Please provide a valid email address');
-    email.focus;
-    return false;
- }
-}
+      if(n==''){
+        alert('Username is required');
+        return false;
+      }else if(e==''){
+        alert('Email is required');
+        return false;
+      }else if (!filter.test(email.value)) {
+      alert('Please provide a valid email address');
+      email.focus;
+      return false;
+   }else if(p==''){
+        alert('Password is required');
+        return false;
+   }else
+    return true;
+  }
   </script>
     <title>Database Systems</title>
 <style>
@@ -95,7 +101,7 @@ function checkEmail() {
 
 		<div>
 			<label>Username</label>
-			<input type="text" name="username" value="<?php echo $name; ?>">
+			<input type="text" name="username" id='N' value="<?php echo $name; ?>">
 		</div>
 		<div>
 			<label>Email</label>
@@ -103,7 +109,7 @@ function checkEmail() {
 		</div>
 		<div>
 			<label>Password</label>
-			<input type="password" name="password">
+			<input type="password" id='P' name="password">
 		</div>
 
 		<?php  if (count($mistakes) > 0) : ?>
@@ -115,7 +121,7 @@ function checkEmail() {
 		<?php  endif ?>
 
 		<div>
-			<button type="submit" name="sub1">Register</button>
+			<button type="submit" onclick="return checkEmail();" name="sub1">Register</button>
 		</div>
 		<p>When you click on register you are accepting our terms.</p>
 		<p>
