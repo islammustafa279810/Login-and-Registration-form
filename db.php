@@ -3,21 +3,21 @@
 
 	$db = mysqli_connect('localhost', 'root', '', 'reg');
 
-	$name = "";
-	$em    = "";
+$name = "";
+ $em    = "";
 	$_SESSION['submit'] = "";
 	$mistakes = array();
 
 
-	if (isset($_POST['sub2'])) {
+if (isset($_POST['sub2'])) {
 
 		$em = mysqli_real_escape_string($db, $_POST['email']);
 		$encrypted = mysqli_real_escape_string($db, $_POST['password']);
 
-		if (empty($em)) { array_push($mistakes, "Enter your email"); }
+if (empty($em)) { array_push($mistakes, "Enter your email"); }
 		if (empty($encrypted)) { array_push($mistakes, "Enter your password"); }
 
-		if (count($mistakes) == 0) {
+if (count($mistakes) == 0) {
 
 			$encrypted = md5($encrypted);
 			$query = "SELECT * FROM registration WHERE email='$em' AND password='$encrypted' ";
@@ -57,7 +57,7 @@
 			// $name = $record["username"];
 			$row = $results->fetch_assoc();
       $_SESSION['username'] = $row['username'];
-				//$_SESSION['email'] = $em;
+				//$_SESSION['email'] = $em;//globalvar access in func /return and check
 				$_SESSION['submit'] ="You can submit now";
 
 				header('location: welcome.php');
@@ -77,11 +77,11 @@
 			$encrypted = mysqli_real_escape_string($db, $_POST['password']);
 
 
-			if (empty($name)) { array_push($mistakes, "required username"); }
+if (empty($name)) { array_push($mistakes, "required username"); }
 			if (empty($em)) { array_push($mistakes, "required email"); }
 			if (empty($encrypted)) { array_push($mistakes, "required password"); }
 
-			$sql_u = "SELECT * FROM registration WHERE username='$name'";
+$sql_u = "SELECT * FROM registration WHERE username='$name'";
 			  	$sql_e = "SELECT * FROM registration WHERE email='$em'";
 			  	$res_u = mysqli_query($db, $sql_u);
 			  	$res_e = mysqli_query($db, $sql_e);

@@ -3,8 +3,8 @@
 <head>
 	<title>Database Systems</title>
 
-  <style>
-body {
+<style>
+ body {
   background-image: url("image1.jpg");
   background-repeat: repeat-x;
 }

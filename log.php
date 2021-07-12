@@ -4,18 +4,26 @@
 <html>
 <head>
 	<script>
-function checkEmail() {
+  function checkEmail() {
+      var p = document.getElementById('P').value;
+      var e = document.getElementById('E').value;
 
-		var email = document.getElementById('E');
-		var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-
-		if (!filter.test(email.value)) {
-		alert('Please provide a valid email address');
-		email.focus;
-		return false;
- }
-}
-	</script>
+      var email = document.getElementById('E');
+      var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+     if(e==''){
+        alert('Email is required');
+        return false;
+      }else if (!filter.test(email.value)) {
+      alert('Please provide a valid email address');
+      email.focus;
+      return false;
+   }else if(p==''){
+        alert('Password is required');
+        return false;
+   }else
+    return true;
+  }
+  </script>
 	<title>Database Systems</title>
 <style>
 	body {
@@ -94,7 +102,7 @@ function checkEmail() {
 		</div>
 		<div>
 			<label>Password</label>
-			<input type="password" name="password">
+			<input type="password" id='P' name="password">
 		</div>
 
 		<?php  if (count($mistakes) > 0) : ?>
@@ -106,7 +114,7 @@ function checkEmail() {
 		<?php  endif ?>
 
 		<div>
-			<button type="submit" name="sub2">Login</button>
+			<button type="submit" onclick="return checkEmail();" name="sub2">Login</button>
 		</div>
 		<p>
 			If you are not register before please <a href="reg.php">Register</a> or go to home page <a href="home.php"> Home </a>
