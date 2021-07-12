@@ -1,4 +1,4 @@
-# Login-and-Registration-form
+# Login and Registration form
 HTML - CSS - JS - PHP - SQL
 <br />
 Dealing with PhpMyAdmin and learning basic SQL commands.
